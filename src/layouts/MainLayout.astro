@@ -1,0 +1,68 @@
+---
+// layouts
+import Navbar from "../components/Navbar.astro"
+// import Hero from "../components/Hero.astro"
+import Footer from "../components/Footer.astro"
+
+// Constants
+import { SITE_NAME, SITE_DESCRIPTION } from "../constants.ts" 
+
+const { title = 'Home' } = Astro.props;
+
+interface Props { 
+  title?: string,
+}
+---
+
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content={SITE_DESCRIPTION} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>{SITE_NAME} | {title}</title>
+  </head>
+
+  <body class="">
+
+    <Navbar />
+    <!-- <Hero title={title} postHeroImage={heroPath}/> -->
+
+    <slot />
+
+    <Footer />
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+  
+  </body>
+
+  <style is:global>
+
+  @font-face {
+    font-family: 'norwester';
+    src: url('../../fonts/norwester.otf')  format('opentype');
+    font-weight: bold;
+    font-style: bold;
+    font-display: swap;
+  }
+
+  h1, h2, h3, h4, h5, h6, #tag, #nav-font, #footer {
+    font-family: norwester;
+  }
+
+  body {
+    font-family: "Barlow Semi Condensed", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  </style>
+
+</html>

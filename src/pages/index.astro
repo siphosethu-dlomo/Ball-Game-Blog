@@ -1,0 +1,50 @@
+---
+// Layouts
+import MainLayout from "../layouts/MainLayout.astro";
+import SectionContainer from "../layouts/SectionContainer.astro";
+import GridContainer from "../layouts/GridContainer.astro";
+
+// components
+import HomeHero from "../components/Home_Hero.astro";
+import PageTitle from "../components/Page_Title.astro";
+import ArticleCard from "../components/Article_Card.astro";
+
+// query collection(s)?
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+// Fetch all blogs and sort by date 
+const allBlogArticles: CollectionEntry<"blog">[] = (
+  await getCollection("blog")
+).sort(
+  (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+---
+
+<MainLayout>
+
+  <HomeHero />
+
+  <SectionContainer>
+
+    <PageTitle title="Latest News" />
+
+    <GridContainer>
+      {
+        allBlogArticles.map((article) => (
+          <ArticleCard article={article} />
+        ))
+      }
+
+    </GridContainer>
+
+  </SectionContainer>
+  
+</MainLayout>
+
+
+  
+
+

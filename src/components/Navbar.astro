@@ -1,0 +1,87 @@
+---
+import { Image } from "astro:assets";
+import logo from "../images/ball.png";
+
+// components
+import NavTopbar from "./Nav_Topbar.astro";
+
+// Astro Icons
+import { Icon } from "astro-icon/components";
+
+// components
+import SearchForm from "./Search_Form.astro";
+
+const currentUrl = Astro.url.pathname;
+
+---
+
+
+<div class="bg-gray-900" id="nav-font">
+  <!-- top bar -->
+  <NavTopbar />
+
+  <nav class="container mx-auto px-4 py-1">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between">
+    <a href="/" class="">
+      <Image src={logo}alt="logo" class="object-cover h-16 w-36"/>
+    </a>
+    <div class="flex slg:order-2">
+      <!-- desktop search icon / magnifying glass -->
+      <button type="button" data-collapse-toggle="navbar-search" class="slg:hidden text-siteYellow focus:outline-none focus:ring-4 focus:ring-siteYellow rounded-lg text-sm p-2.5 me-1">
+        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+        </svg>
+        <span class="sr-only">Search</span>
+      </button>
+
+      <!-- desktop searchbar -->
+      <div class="relative hidden slg:block">
+        <SearchForm />
+      </div>
+
+      <!-- hamburger icon / menu -->
+      <button data-collapse-toggle="navbar-search" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-siteYellow slg:hidden" aria-controls="navbar-search" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <Icon name="ri:menu-2-fill" class="text-siteYellow text-4xl"/>
+      </button>
+      
+    </div>
+      <div class="items-center justify-between hidden w-full slg:flex slg:w-auto slg:order-1" id="navbar-search">
+
+        <div class="relative mt-3 slg:hidden">
+          <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <!-- mobile search icon / magnifying glass -->
+            <svg class="w-4 h-4 text-siteYellow dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg>
+          </div>
+          
+          <!-- searchbar: mobile -->
+          <input type="text" id="search-navbar" class="block w-full p-2 ps-10 text-sm text-gray-900 border focus:border-siteYellow focus:ring-siteYellow rounded bg-gray-50" placeholder="Search...">
+        </div>
+
+        <!-- menu list: mobile & desktop -->
+        <ul class="flex flex-col my-4 py-2 px-2 divide-y-2 divide-siteYellow divide-opacity-30 text-base border border-siteYellow slg:divide-none slg:border-none rounded bg-gray-900 slg:space-x-14 slg:flex-row">
+          <li class="hover:bg-siteYellow hover:bg-opacity-80  slg:hover:bg-transparent px-1">
+            <a
+              href="/about"
+              class={currentUrl === '/about' ? 'block text-gray-100 slg:text-siteYellow' : 'block text-gray-100 slg:hover:text-siteYellow transition'}>About</a
+            >
+          </li>
+          <li class="hover:bg-siteYellow hover:bg-opacity-80  slg:hover:bg-transparent px-1">
+            <a
+              href="/articles"
+              class={currentUrl === '/articles' ? 'block text-gray-100 slg:text-siteYellow' : 'block text-gray-100 slg:hover:text-siteYellow transition'}>News</a
+            >
+          </li>
+          <li class="hover:bg-siteYellow hover:bg-opacity-80  slg:hover:bg-transparent px-1" >
+            <a
+              href="/contact"
+              class={currentUrl === '/contact' ? 'block text-gray-100 slg:text-siteYellow' : 'block text-gray-100 slg:hover:text-siteYellow transition'}>Contact</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

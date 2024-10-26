@@ -1,0 +1,15 @@
+---
+import { getImage } from "astro:assets";
+
+import hero from "../images/hero-img.png"
+const optimizedBackgroundImage = await getImage({src: hero, format: 'webp'});
+
+---
+
+<section style={`background-image: url(${optimizedBackgroundImage.src}); height: 55vh;`} class="flex justify-center items-center h-screen bg-no-repeat bg-cover bg-center">
+  <div class="text-center">
+    <div>
+      <h1 class="text-gray-100 text-[10rem] mb-5 font-bold leading-none">Ball Game</h1>
+    </div>
+  </div>
+</section>

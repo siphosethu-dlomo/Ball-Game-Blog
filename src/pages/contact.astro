@@ -1,0 +1,50 @@
+---
+// layouts
+import MainLayout from "../layouts/MainLayout.astro";
+import SectionContainer from "../layouts/SectionContainer.astro";
+
+// components
+import OtherPagesHero from "../components/Other_Pages_Hero.astro";
+import PageTitle from "../components/Page_Title.astro";
+
+---
+
+<MainLayout title="Contact Us">
+
+  <OtherPagesHero />
+  
+  <SectionContainer>
+
+    <PageTitle title="Contact Us" />
+    
+    <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6 my-20 ">
+      <form action="" class="flex flex-col px-60">
+        <label for="" class="text-gray-900 text-xl">Name *</label>
+        <input 
+          type="text" 
+          class="mt-2 mb-6 border-2 border-siteYellow focus:border-gray-900 focus:ring-gray-900 rounded" 
+          required 
+        />
+
+        <label for="" class="text-gray-900 text-xl">Email *</label>
+        <input 
+          type="email" 
+          class="mt-2 mb-6 border-2 border-siteYellow focus:border-gray-900 focus:ring-gray-900 rounded" 
+          required 
+        />
+
+        <label for="" class="text-gray-900 text-xl">Message *</label>
+        <textarea
+          rows="4"
+          class="mt-2 mb-6 border-2 border-siteYellow focus:border-gray-900 focus:ring-gray-900 rounded"
+          name=""  
+          id=""
+          required></textarea>
+
+        <button type="submit" class="text-xl font-semibold bg-siteYellow cursor-pointer py-2 rounded hover:bg-gray-900 hover:text-siteYellow transition">Submit</button>
+      </form>
+    </div>
+    
+  </SectionContainer>
+
+</MainLayout>

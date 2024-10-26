@@ -1,0 +1,107 @@
+---
+// Astro
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+// layouts
+import MainLayout from "../../layouts/MainLayout.astro";
+import SectionContainer from "../../layouts/SectionContainer.astro";
+
+// components
+import Tags from "../../components/Tags.astro";
+
+// images
+import avator from "../../images/thabo.png"
+
+// Format date function
+import { formatDate } from "../../utils";
+
+import { getEntry } from "astro:content";
+
+const { slug } =  Astro.params
+
+if(slug === undefined) {
+  throw new Error('Slug is required')
+}
+
+const entry = await getEntry('blog', slug)
+
+if(entry === undefined) {
+  return Astro.redirect('/404')
+}
+
+const { Content } = await entry.render()
+
+---
+<MainLayout title={entry.data.title}>
+
+  <SectionContainer>
+
+    <nav class="my-8">
+      <ol class="flex flex-wrap items-center gap-1">
+        <li>
+          <a href="/" class="text-neutral-400">Home</a> >
+        </li>
+        <li>
+          <a href="/articles" class="text-neutral-400">News</a> >
+        </li>
+        <li>
+          <span class="font-semibold text-siteYellow">{entry.data.title}</span> 
+        </li>
+      </ol>
+    </nav>
+
+    <div>
+      <Image src={entry.data.image} alt="po" class="w-full h-[68vh] rounded-md object-cover object-[center_top]" />
+    </div>
+
+    <div>
+
+      <h1 class="text-[85px] text-siteYellow font-bold leading-[90px] my-12 w-11/12">{entry.data.title}</h1>
+      <div class="my-10">
+        <span class="inline-block text-gray-800 text-lg mr-1">{formatDate(entry.data.pubDate)}</span> | <span class="inline-block font-bold text-lg text-siteYellow ml-1">{entry.data.author}</span>
+      </div>
+  
+      <main class="w-[65%] text-justify">
+        <Content />
+      </main>
+
+      <div class="flex gap-2 mt-10">
+        <Icon name="ri:price-tag-3-fill" class="text-2xl text-gray-800" />
+        <Tags tags={entry.data.tags}/>
+      </div>
+
+      <div class="p-6 my-10 rounded-md bg-gray-900 w-[65%] border-b-8 border-r-8 border-t-8 border-siteYellow">
+        <div class="flex justify-end">
+          <h3 class=" text-4xl my-5 text-siteYellow">Meet The Author</h3>
+        </div>
+        <div class="flex gap-10 pb-8">
+          <Image src={avator} alt="author" class="rounded-full w-48 h-48 object-cover"/>
+          <p class="text-gray-100 text-justify mt-3">Thabo is a seasoned football writer with a passion for the beautiful game. With over 5 of experience, he covers everything from local leagues to international tournaments, providing insightful analysis and compelling narratives for fans around the world. When not reporting on football, Thabo enjoys playing the game and exploring new stadiums. Follow him on social media platform to stay updated on the latest in football.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </SectionContainer>
+
+  <style is:global>
+    
+    h2 {
+      margin: 30px 0px;
+      font-size: 36px;
+      color: #f0b71c;
+    }
+
+    h1 {
+      
+    }
+
+    p {
+      font-size: 18px;
+      color: #1f2937;
+    }
+
+  </style>
+
+</MainLayout>

@@ -1,0 +1,17 @@
+---
+const { tags } = Astro.props
+
+interface Props {
+  tags: string[];
+}
+---
+
+<div class="flex flex-wrap gap-2 ml-[7px]">
+  {tags.map((tag: string, index: number) => (
+    <a href={"/articles/tag/" + tag} class="-skew-x-[30deg]  md:text-xs px-4 py-1 mb-2 bg-siteYellow text-gray-800  hover:text-black duration-100 transition">
+      <span id="tag" class={index === 0 ? "mr-2 skew-x-[30deg] text-[13px] inline-block before:absolute before:bg-siteYellow before:-top-1 before:-left-[23px] before:w-[15px] before:h-6" : "skew-x-[30deg] text-[13px] inline-block"}>
+        {tag}
+      </span>
+    </a>
+  ))}
+</div>
