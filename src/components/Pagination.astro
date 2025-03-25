@@ -9,15 +9,16 @@ interface Props {
 }
 ---
 
-<div class="flex justify-between mt-10">
-  <a href={'/articles?page=' + (currentPage - 1)} class={
-    disablePrevious ? "inline-block bg-gray-100 px-3 py-2 text-gray-400 rounded-lg pointer-events-none" : "inline-block bg-indigo-100 px-3 py-2 hover:bg-indigo-600 hover:text-white rounded-lg"
+<div class="flex justify-center gap-5 mb-20">
+  <a href={'/articles?page=' + (currentPage - 1)} 
+  class={
+    disablePrevious ? "inline-block bg-gray-100 px-3 py-2 text-gray-400 pointer-events-none" : "text-xl font-semibold bg-siteYellow cursor-pointer px-3 py-2 rounded hover:bg-gray-900 hover:text-siteYellow transition"
   }>
     Previous
   </a>
   <a href={'/articles?page=' + (currentPage + 1)} 
     class={
-      disableNext ? "inline-block bg-gray-100 px-3 py-2 text-gray-400 rounded-lg pointer-events-none" : "inline-block bg-indigo-100 px-3 py-2 hover:bg-indigo-600 hover:text-white rounded-lg"
+      disableNext ? "inline-block bg-gray-100 px-3 py-2 text-gray-400 pointer-events-none" : "text-xl font-semibold bg-siteYellow cursor-pointer px-3 py-2 rounded hover:bg-gray-900 hover:text-siteYellow transition"
     }>
     Next
   </a>

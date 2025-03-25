@@ -37,32 +37,43 @@ const { Content } = await entry.render()
 
   <SectionContainer>
 
-    <nav class="my-8">
-      <ol class="flex flex-wrap items-center gap-1">
-        <li>
-          <a href="/" class="text-neutral-400">Home</a> >
+    <nav class="text-sm md:text-lg my-8">
+      <ol class="list-none inline-flex">
+        <li class="flex items-center">
+          <div class="flex items-center">
+            <a href="/" class="text-neutral-400">Home</a> 
+            <span class="mx-1"> > </span>
+          </div>
+        </li>
+        <li class="flex items-center">
+          <div class="flex items-center">
+            <a href="/articles" class="text-neutral-400">News</a> 
+            <span class="mx-1"> > </span>
+          </div>
+        </li>
+        <li class="flex items-center">
+          <div class="flex items-center">
+            <span class="w-[200px] md:w-full truncate font-semibold text-siteYellow ">{entry.data.title}</span>
+          </div>
         </li>
         <li>
-          <a href="/articles" class="text-neutral-400">News</a> >
-        </li>
-        <li>
-          <span class="font-semibold text-siteYellow">{entry.data.title}</span> 
+         
         </li>
       </ol>
     </nav>
 
-    <div>
-      <Image src={entry.data.image} alt="po" class="w-full h-[68vh] rounded-md object-cover object-[center_top]" />
+    <div class="relative h-[220px] w-full overflow-hidden rounded-md md:h-[350px] lg:h-[418px] lg:rounded-lg">
+      <Image src={entry.data.image} alt="po" class="object-cover object-top"/>
     </div>
 
     <div>
 
-      <h1 class="text-[85px] text-siteYellow font-bold leading-[90px] my-12 w-11/12">{entry.data.title}</h1>
+      <h1 class="text-[36px] leading-[40px] lg:text-[56px] lg:leading-[68px] text-siteYellow font-bold my-12">{entry.data.title}</h1>
       <div class="my-10">
         <span class="inline-block text-gray-800 text-lg mr-1">{formatDate(entry.data.pubDate)}</span> | <span class="inline-block font-bold text-lg text-siteYellow ml-1">{entry.data.author}</span>
       </div>
   
-      <main class="w-[65%] text-justify">
+      <main>
         <Content />
       </main>
 
@@ -71,14 +82,38 @@ const { Content } = await entry.render()
         <Tags tags={entry.data.tags}/>
       </div>
 
-      <div class="p-6 my-10 rounded-md bg-gray-900 w-[65%] border-b-8 border-r-8 border-t-8 border-siteYellow">
-        <div class="flex justify-end">
-          <h3 class=" text-4xl my-5 text-siteYellow">Meet The Author</h3>
+      <div class="p-6 text-center lg:text-left lg:px-12 lg:py-8 my-10 rounded-md bg-gray-900 lg:w-[60%] border-b-8 border-r-8 border-t-8 border-siteYellow">
+        <div class="mb-6 lg:flex lg:flex-col lg:justify-end">
+          <h3 class="text-3xl mb-2 text-siteYellow">Meet The Author</h3>
+          <h6 class="text-lg tracking-widest text-siteYellow">Thabo Peter</h6>
         </div>
-        <div class="flex gap-10 pb-8">
-          <Image src={avator} alt="author" class="rounded-full w-48 h-48 object-cover"/>
-          <p class="text-gray-100 text-justify mt-3">Thabo is a seasoned football writer with a passion for the beautiful game. With over 5 of experience, he covers everything from local leagues to international tournaments, providing insightful analysis and compelling narratives for fans around the world. When not reporting on football, Thabo enjoys playing the game and exploring new stadiums. Follow him on social media platform to stay updated on the latest in football.</p>
+        <div class="lg:flex lg:gap-14 lg:pt-3 lg:pb-10">
+          <p class="text-gray-100">Thabo is a seasoned football writer with a passion for the beautiful game. With over 5 of experience, he covers everything from local leagues to international tournaments, providing insightful analysis and compelling narratives for fans around the world. When not reporting on football, Thabo enjoys playing the game and exploring new stadiums. Follow him on social media platform to stay updated on the latest in football.</p>
+          <Image src={avator} alt="author" class="my-6 rounded-full w-52 h-52 object-cover mx-auto"/>
         </div>
+        <div class="pt-3">
+          <span class="space-x-3">
+            <a href=""
+              ><Icon
+                name="ri:facebook-fill"
+                class="inline-block text-siteYellow"
+              /></a
+            >
+            <a href=""
+              ><Icon
+                name="ri:instagram-line"
+                class="inline-block text-siteYellow"
+              /></a
+            >
+            <a href=""
+              ><Icon
+                name="ri:twitter-x-line"
+                class="inline-block text-siteYellow"
+              /></a
+            >
+          </span>
+        </div>
+        
       </div>
 
     </div>
@@ -88,8 +123,10 @@ const { Content } = await entry.render()
   <style is:global>
     
     h2 {
-      margin: 30px 0px;
-      font-size: 36px;
+      margin: 20px 0px;
+      font-size: 18px;
+      line-height: 28px;
+      letter-spacing: 1px;
       color: #f0b71c;
     }
 
@@ -99,7 +136,14 @@ const { Content } = await entry.render()
 
     p {
       font-size: 18px;
+      line-height: 28px;
       color: #1f2937;
+    }
+
+    .truncate {
+      white-space: nowrap; 
+      overflow: hidden; 
+      text-overflow: ellipsis;
     }
 
   </style>

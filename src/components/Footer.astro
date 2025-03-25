@@ -3,10 +3,9 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<footer class="bg-gray-900" id="footer">
-  <div class="container mx-auto flex justify-between py-2 px-4">
-    <span class="text-siteYellow text-sm">&copy; 2024 Ball One. Motherwell, South Africa. All Rights Reserved</span>
-    <span class="space-x-3">
+<footer class="bg-gray-900 py-5 pl-4 pr-6 text-center" id="footer">
+  <div class="mb-4">
+    <span class="space-x-3 text-xl">
       <a href=""
         ><Icon
           name="ri:facebook-fill"
@@ -25,12 +24,9 @@ import { Icon } from "astro-icon/components";
           class="inline-block text-siteYellow"
         /></a
       >
-      <a href=""
-        ><Icon
-          name="ri:tiktok-fill"
-          class="inline-block text-siteYellow"
-        /></a
-      >
     </span>
+  </div>
+  <div class="container">
+    <span class="text-siteYellow text-sm">&copy; {new Date().getFullYear()} Ball One. Motherwell, South Africa. All Rights Reserved</span>
   </div>
 </footer>
