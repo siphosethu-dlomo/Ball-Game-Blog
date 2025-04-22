@@ -26,21 +26,13 @@ const currentUrl = Astro.url.pathname;
       <Image src={logo}alt="logo" class="object-cover h-16 w-36"/>
     </a>
     <div class="flex slg:order-2">
-      <!-- desktop search icon / magnifying glass -->
-      <button type="button" data-collapse-toggle="navbar-search" class="slg:hidden text-siteYellow focus:outline-none focus:ring-4 focus:ring-siteYellow rounded-lg text-sm p-2.5 me-1">
-        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-        </svg>
-        <span class="sr-only">Search</span>
-      </button>
-
       <!-- desktop searchbar -->
       <div class="relative hidden slg:block">
         <SearchForm />
       </div>
 
       <!-- hamburger icon / menu -->
-      <button data-collapse-toggle="navbar-search" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-siteYellow slg:hidden" aria-controls="navbar-search" aria-expanded="false">
+      <button data-collapse-toggle="navbar-search" type="button" class="focus:outline-none focus:ring-4 focus:ring-siteYellow rounded-lg inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-siteYellow slg:hidden" aria-controls="navbar-search" aria-expanded="false">
           <span class="sr-only">Open main menu</span>
           <Icon name="ri:menu-2-fill" class="text-siteYellow text-4xl"/>
       </button>
@@ -49,12 +41,6 @@ const currentUrl = Astro.url.pathname;
       <div class="items-center justify-between hidden w-full slg:flex slg:w-auto slg:order-1" id="navbar-search">
 
         <div class="relative mt-3 slg:hidden">
-          <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-            <!-- mobile search icon / magnifying glass -->
-            <svg class="w-4 h-4 text-siteYellow dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-            </svg>
-          </div>
           
           <!-- searchbar: mobile -->
           <form id="search-form" class="items-center" action="/articles/search">
@@ -62,7 +48,7 @@ const currentUrl = Astro.url.pathname;
               type="search"
               id="query"
               name="query" 
-              class="block w-full p-2 ps-10 text-sm text-gray-900 border focus:border-siteYellow focus:ring-siteYellow rounded bg-gray-50" 
+              class="block w-full p-2 text-sm text-gray-900 border focus:border-siteYellow focus:ring-siteYellow rounded bg-gray-50" 
               placeholder="Search..."
             />
             <button
